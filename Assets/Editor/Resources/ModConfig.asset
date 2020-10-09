@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615501dbe4f3fe94fbf4b564abb10237, type: 3}
+  m_Name: ModConfig
+  m_EditorClassIdentifier: 
+  id: xelSymmetriesOfASquare
+  title: Symmetries OF A Square
+  author: PANOPTES
+  description: 'Who lives in a module under the sea?
+
+
+    Symmetries Of A Square Regular module by PANOPTES.
+
+
+    Module ID: xelSymmetriesOfASquare.
+
+
+    If you''re wondering what happpened, my computer broke, so a github repo for Pixel
+    Number Base will not be forthcoming.'
+  version: 1.1
+  outputFolder: build
+  previewImage: {fileID: 2800000, guid: d13b9227bc8b26e408d29e68da6c5477, type: 3}
