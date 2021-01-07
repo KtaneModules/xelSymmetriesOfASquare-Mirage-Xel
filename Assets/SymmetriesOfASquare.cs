@@ -16,7 +16,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 		new int[] {1,2,3,0},
         new int[] {3,2,1,0},
         new int[] {2,1,0,3},
-        new int[] {3,2,1,0},
+        new int[] {1,0,2,3},
 		new int[] {0,3,2,1}
 	};
 	int[] squareState = new int[] { 0, 1, 2, 3 };
@@ -24,7 +24,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 	int stage;
 	public KMBombModule module;
 	public KMAudio sound;
-	string[] symmetryNames = new string[] {"Identity", "Rotate 90", "Rotate 180", "Rotate -90", "Reflect Horizontal", "Reflect Right Diagonal", "Reflect Horizontal", "Reflect Left Diagonal"};
+	string[] symmetryNames = new string[] {"Identity", "Rotate 90", "Rotate 180", "Rotate -90", "Reflect Horizontal", "Reflect Right Diagonal", "Reflect Vertical", "Reflect Left Diagonal"};
 	string[] chosenSymmetryNames = new string[3];
 	int moduleId;
 	static int moduleIdCounter = 1;
