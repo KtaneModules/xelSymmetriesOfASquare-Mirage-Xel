@@ -16,7 +16,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 		new int[] {1,2,3,0},
         new int[] {3,2,1,0},
         new int[] {2,1,0,3},
-        new int[] {1,0,2,3},
+        new int[] {1,0,3,2},
 		new int[] {0,3,2,1}
 	};
 	int[] squareState = new int[] { 0, 1, 2, 3 };
