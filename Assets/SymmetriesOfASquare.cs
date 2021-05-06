@@ -10,7 +10,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 	public SpriteRenderer[] chosenSymmetries;
 	public Material[] symmetryMats;
 	public Sprite[] symmetries;
-	int[] squareState = new int[] { 0, 1, 2, 3 };
+	int[] squareState = new int[] { -1, -1, -1, -1 };
 	int[] chosenSymmetryIndices = new int[3];
 	int stage;
 	public KMBombModule module;
@@ -32,6 +32,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 	}
 
 	void Start () {
+		int[] numbers = new int[] { 0, 1, 2, 3 };
 		for (int i = 0; i < 3; i++)  {
 			chosenSymmetryIndices[i] = rnd.Range(0, 8);
 			chosenSymmetries[i].sprite = symmetries[chosenSymmetryIndices[i]];
@@ -41,59 +42,61 @@ public class SymmetriesOfASquare : MonoBehaviour {
 			switch (chosenSymmetryIndices[i])
             {
 				case 1:
-					temp1 = squareState[0];
-					temp2 = squareState[1];
-					squareState[0] = squareState[3];
-					squareState[1] = squareState[2];
-					squareState[3] = temp1;
-					squareState[2] = temp2;
+					temp1 = numbers[0];
+					temp2 = numbers[1];
+					numbers[0] = numbers[3];
+					numbers[1] = numbers[2];
+					numbers[3] = temp1;
+					numbers[2] = temp2;
 					break;
 				case 2:
-					temp1 = squareState[0];
-					squareState[0] = squareState[2];
-					squareState[2] = temp1;
+					temp1 = numbers[0];
+					numbers[0] = numbers[2];
+					numbers[2] = temp1;
 					break;
 				case 3:
-					temp1 = squareState[0];
-					temp2 = squareState[3];
-					squareState[0] = squareState[1];
-					squareState[3] = squareState[2];
-					squareState[1] = temp1;
-					squareState[2] = temp2;
+					temp1 = numbers[0];
+					temp2 = numbers[3];
+					numbers[0] = numbers[1];
+					numbers[3] = numbers[2];
+					numbers[1] = temp1;
+					numbers[2] = temp2;
 					break;
 				case 4:
-					temp1 = squareState[1];
-					squareState[1] = squareState[3];
-					squareState[3] = temp1;
+					temp1 = numbers[1];
+					numbers[1] = numbers[3];
+					numbers[3] = temp1;
 					break;
 				case 5:
 					for (int j = 0; j < 4; j++)
 					{
-						squareState[j]--;
-						if (squareState[j] < 0)
-							squareState[j] += 4;
+						numbers[j]++;
+						if (numbers[j] > 3)
+							numbers[j] -= 4;
 					}
 					break;
 				case 6:
 					for (int j = 0; j < 4; j++)
 					{
-						squareState[j] -= 2;
-						if (squareState[j] < 0)
-							squareState[j] += 4;
+						numbers[j] -= 2;
+						if (numbers[j] < 0)
+							numbers[j] += 4;
 					}
 					break;
 				case 7:
 					for (int j = 0; j < 4; j++)
-                    {
-						squareState[j]++;
-						if (squareState[j] > 3)
-							squareState[j] -= 4;
-                    }
+					{
+						numbers[j]--;
+						if (numbers[j] < 0)
+							numbers[j] += 4;
+					}
 					break;
 				default:
 					break;
             }
 		}
+		for (int i = 0; i < 4; i++)
+			squareState[i] = Array.IndexOf(numbers, i);
 		Debug.LogFormat("[Symmetries Of A Square #{0}] The symmetries on the module in order are {1}.", moduleId, chosenSymmetryNames.Join(", "));
 		Debug.LogFormat("[Symmetries Of A Square #{0}] The order in which the vertices should be pressed are {1}, {2}, {3}, {4}.", moduleId, squareState[0] + 1, squareState[1] + 1, squareState[2] + 1, squareState[3] + 1);
 	}
@@ -109,7 +112,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 				module.HandleStrike();
 				Debug.LogFormat("[Symmetries Of A Square #{0}] That was incorrect. Strike!", moduleId);
 				stage = 0;
-				squareState = new int[] { 0, 1, 2, 3 };
+				squareState = new int[] { -1, -1, -1, -1 };
 				Start();
 			}   
 			else if (stage == square.Length - 1)
