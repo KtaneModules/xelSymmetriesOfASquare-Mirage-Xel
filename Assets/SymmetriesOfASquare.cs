@@ -38,7 +38,7 @@ public class SymmetriesOfASquare : MonoBehaviour {
 			chosenSymmetries[i].sprite = symmetries[chosenSymmetryIndices[i]];
 			chosenSymmetries[i].material = symmetryMats[chosenSymmetryIndices[i]];
 			chosenSymmetryNames[i] = symmetryNames[chosenSymmetryIndices[i]];
-			int temp1, temp2;
+			int temp1, temp2, temp3, temp4;
 			switch (chosenSymmetryIndices[i])
             {
 				case 1:
@@ -68,12 +68,14 @@ public class SymmetriesOfASquare : MonoBehaviour {
 					numbers[3] = temp1;
 					break;
 				case 5:
-					for (int j = 0; j < 4; j++)
-					{
-						numbers[j]++;
-						if (numbers[j] > 3)
-							numbers[j] -= 4;
-					}
+					temp1 = numbers[0];
+					temp2 = numbers[1];
+					temp3 = numbers[2];
+					temp4 = numbers[3];
+					numbers[3] = temp1;
+					numbers[0] = temp2;
+					numbers[1] = temp3;
+					numbers[2] = temp4;
 					break;
 				case 6:
 					for (int j = 0; j < 4; j++)
@@ -84,12 +86,14 @@ public class SymmetriesOfASquare : MonoBehaviour {
 					}
 					break;
 				case 7:
-					for (int j = 0; j < 4; j++)
-					{
-						numbers[j]--;
-						if (numbers[j] < 0)
-							numbers[j] += 4;
-					}
+					temp1 = numbers[0];
+					temp2 = numbers[1];
+					temp3 = numbers[2];
+					temp4 = numbers[3];
+					numbers[0] = temp4;
+					numbers[1] = temp1;
+					numbers[2] = temp2;
+					numbers[3] = temp3;
 					break;
 				default:
 					break;
